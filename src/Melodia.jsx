@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 // ─── MOCK DATA ────────────────────────────────────────────────────────────────
 const MOCK_SONGS = [
@@ -267,8 +267,6 @@ const WaveVisualizer = ({ playing = true, bars = 32, height = 48 }) => {
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 const Nav = ({ page, setPage, user, setUser }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   const links = user
     ? [
         { label: "Discover", key: "dashboard" },
@@ -334,13 +332,6 @@ const Nav = ({ page, setPage, user, setUser }) => {
 
 // ─── HOME PAGE ────────────────────────────────────────────────────────────────
 const HomePage = ({ setPage }) => {
-  const [activeWave, setActiveWave] = useState(true);
-
-  useEffect(() => {
-    const id = setInterval(() => setActiveWave(v => v), 2000);
-    return () => clearInterval(id);
-  }, []);
-
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       {/* Hero */}
